@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 
 const navItems = [
+  { label: "Producto", href: "/#producto" },
   { label: "Problema", href: "/#problema" },
   { label: "Solución", href: "/#solucion" },
   { label: "Módulos", href: "/#modulos" },

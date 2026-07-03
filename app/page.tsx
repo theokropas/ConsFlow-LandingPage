@@ -6,31 +6,39 @@ import { Card, Section } from "@/components/Section";
 export const metadata: Metadata = {
   title: "ConsFlow | CRM con WhatsApp para administradoras de consorcios",
   description:
-    "Centralizá reclamos, consultas, documentos, unidades funcionales e historial de conversaciones en una sola plataforma para administradoras de consorcios.",
+    "Ordená edificios, unidades funcionales, deudas, reclamos, consultas y trazabilidad operativa en una plataforma para administradoras de consorcios.",
   openGraph: {
     title: "ConsFlow | CRM con WhatsApp para administradoras de consorcios",
     description:
-      "Centralizá reclamos, consultas, documentos, unidades funcionales e historial de conversaciones en una sola plataforma para administradoras de consorcios.",
+      "Ordená edificios, unidades funcionales, deudas, reclamos, consultas y trazabilidad operativa en una plataforma para administradoras de consorcios.",
   },
 };
 
 const problemCards = [
-  ["WhatsApps desordenados", "Mensajes importantes quedan mezclados con conversaciones operativas, sin criterios claros de prioridad."],
-  ["Reclamos difíciles de seguir", "Es complejo saber qué casos están abiertos, quién tomó intervención y qué respuesta se dio."],
-  ["Consultas repetidas", "El equipo responde una y otra vez preguntas frecuentes que podrían estar mejor organizadas."],
-  ["Documentos dispersos", "Reglamentos, comprobantes, expensas y comunicaciones se distribuyen por distintos canales."],
-  ["Falta de historial por unidad", "La información queda asociada a chats sueltos y no a unidades funcionales o edificios."],
-  ["Poca visibilidad operativa", "Sin trazabilidad, resulta difícil medir carga de trabajo, pendientes y tiempos de respuesta."],
+  ["WhatsApps desordenados", "Mensajes importantes quedan mezclados con conversaciones del día a día, sin prioridad ni contexto administrativo."],
+  ["Reclamos difíciles de seguir", "Cada reclamo necesita estado, edificio, unidad y seguimiento. Si queda en un chat, se vuelve frágil."],
+  ["Deudas sin contexto", "Las expensas y saldos pendientes deben entenderse por unidad funcional, incluso cuando cambian los ocupantes."],
+  ["Documentos dispersos", "Reglamentos, comprobantes, PDFs y comunicaciones se distribuyen por canales distintos y se vuelven difíciles de encontrar."],
+  ["Falta de historial por unidad", "La memoria operativa de una administradora no puede depender de quién atendió el último mensaje."],
+  ["Poca visibilidad operativa", "Sin un panel claro, cuesta ver reclamos demorados, deudas vencidas y temas que requieren atención."],
 ];
 
 const modules = [
-  ["Inbox centralizado", "Un espacio de trabajo para ordenar conversaciones entrantes y consultas del día a día."],
-  ["Reclamos y tickets", "Registro de casos con estado, responsable, prioridad y seguimiento operativo."],
-  ["Historial por unidad funcional", "Contexto reunido por edificio, unidad, vecino y conversación para responder con más claridad."],
-  ["Gestión de documentos", "Organización de documentos frecuentes para facilitar su consulta y envío responsable."],
-  ["Automatización de consultas frecuentes", "Asistencia para clasificar y responder preguntas habituales sin perder control humano."],
-  ["Trazabilidad y auditoría", "Registro de interacciones y acciones para entender qué pasó y quién intervino."],
-  ["Gestión por edificio", "Segmentación de información y casos por consorcio para equipos que administran varias propiedades."],
+  ["Panel por consorcio activo", "Cambiá el foco de trabajo por edificio y mirá pendientes, reclamos, unidades y deudas en contexto."],
+  ["Reclamos y consultas", "Registrá solicitudes con estado, tipo, prioridad y vínculo a edificio, unidad y persona relacionada."],
+  ["Unidades funcionales", "Mantené la información organizada por unidad, propietario, inquilino, autorizado o encargado."],
+  ["Deudas y expensas", "Seguimiento operativo de saldos por unidad funcional para que el historial no dependa del ocupante de turno."],
+  ["Proveedores y categorías", "Ordená rubros, proveedores y categorías de reclamos para responder con más criterio operativo."],
+  ["FAQs y documentos", "Prepará respuestas frecuentes y documentos del edificio para reducir consultas repetidas."],
+  ["Auditoría administrativa", "Trazabilidad de acciones y cambios para entender qué pasó, cuándo y sobre qué entidad."],
+  ["Automatización asistida", "Ayuda para consultas frecuentes, con derivación humana cuando el caso requiere criterio administrativo."],
+];
+
+const productTruths = [
+  ["El edificio como tablero", "Cada consorcio concentra sus unidades, reclamos, deudas, documentos y prioridades."],
+  ["La unidad como historial", "La deuda y los antecedentes se ordenan por unidad funcional, no por chats o personas sueltas."],
+  ["El reclamo como caso", "Cada consulta puede convertirse en un ticket con estado, prioridad y seguimiento visible."],
+  ["La auditoría como respaldo", "Las acciones relevantes quedan pensadas para ser revisables por el equipo administrativo."],
 ];
 
 const audiences = [
@@ -50,7 +58,7 @@ export default function HomePage() {
           <div>
             <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-3 py-2 pr-4 text-sm font-medium text-slateblue shadow-sm backdrop-blur">
               <BrandLogo size="sm" priority />
-              <span>Plataforma operativa para administradoras de consorcios</span>
+              <span>Backoffice operativo para administradoras de consorcios</span>
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
               El CRM con WhatsApp para administradoras de consorcios
@@ -59,7 +67,7 @@ export default function HomePage() {
               Centralizá reclamos, consultas, documentos, unidades funcionales e historial de conversaciones en una sola plataforma.
             </p>
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
-              Diseñado para administradoras que necesitan ordenar la atención diaria, mejorar la trazabilidad y mantener control humano sobre los casos sensibles.
+              Diseñado para administradoras que necesitan pasar de mensajes sueltos a una mesa de control: consorcios activos, unidades, deudas, reclamos y trazabilidad con criterio humano.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link className="group inline-flex items-center justify-center rounded-full bg-slateblue px-6 py-3 text-base font-semibold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-ink hover:shadow-premium focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slateblue motion-reduce:hover:translate-y-0" href="/contact">
@@ -71,9 +79,9 @@ export default function HomePage() {
             </div>
             <div className="mt-8 grid max-w-2xl gap-3 text-sm text-slate-600 sm:grid-cols-3">
               {[
-                "Inbox centralizado",
-                "Tickets con responsables",
-                "Historial por unidad",
+                "Consorcio activo",
+                "Deudas por unidad",
+                "Reclamos con estado",
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-white/80 bg-white/70 px-4 py-3 shadow-sm backdrop-blur">
                   <span className="mr-2 inline-block h-2 w-2 rounded-full bg-brandblue" aria-hidden="true" />{item}
@@ -86,10 +94,21 @@ export default function HomePage() {
       </section>
 
       <Section
+        id="producto"
+        eyebrow="Identidad de producto"
+        title="Una administradora no necesita otro chat: necesita una cabina de control"
+        intro="ConsFlow está pensado desde la lógica real de una administración: edificios, unidades funcionales, vecinos, deudas, reclamos, proveedores, documentos y acciones que necesitan quedar ordenadas."
+      >
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {productTruths.map(([title, text]) => <Card key={title} title={title}>{text}</Card>)}
+        </div>
+      </Section>
+
+      <Section
         id="problema"
         eyebrow="Problema"
         title="La atención diaria de una administradora no debería depender de mensajes sueltos"
-        intro="Cuando los reclamos, consultas y documentos se gestionan en conversaciones dispersas, es difícil saber qué está pendiente, quién respondió y qué historial tiene cada unidad."
+        intro="Cuando los reclamos, deudas, documentos y consultas viven en conversaciones dispersas, el equipo pierde contexto: qué unidad corresponde, qué edificio está afectado, qué está vencido y qué requiere seguimiento."
       >
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {problemCards.map(([title, text]) => (
@@ -98,22 +117,25 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="solucion" eyebrow="Solución" title="ConsFlow centraliza la operación de atención y gestión de reclamos" className="bg-white">
+      <Section id="solucion" eyebrow="Solución" title="ConsFlow convierte la atención diaria en operación trazable" className="bg-white">
         <div className="grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative overflow-hidden rounded-3xl border border-sky-100 bg-gradient-to-br from-calm to-white p-8 shadow-soft">
             <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-brandblue/10" aria-hidden="true" />
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slateblue">Operación conectada</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slateblue">Orden administrativo real</p>
             <p className="mt-4 text-lg leading-8 text-slate-700">
-              ConsFlow reúne conversaciones, reclamos, unidades funcionales, documentos e historial en una plataforma pensada para el trabajo diario de una administradora.
+              ConsFlow reúne conversaciones, reclamos, unidades funcionales, deudas, proveedores, documentos e historial en una plataforma pensada para el trabajo diario de una administradora.
             </p>
+            <div className="mt-6 rounded-2xl border border-white/80 bg-white/70 p-4 text-sm leading-6 text-slate-600 shadow-sm">
+              La lógica es simple: cada cosa tiene lugar. Un reclamo pertenece a un edificio y una unidad; una deuda queda asociada a la unidad; una acción deja rastro para el equipo.
+            </div>
           </div>
           <ul className="grid gap-4 text-slate-700 sm:grid-cols-2">
             {[
-              "Centralizá los canales de atención en un flujo operativo claro.",
-              "Convertí consultas y reclamos en casos con seguimiento.",
-              "Asociá información relevante a edificios y unidades funcionales.",
-              "Mantené registro de conversaciones, respuestas y acciones del equipo.",
-              "Ordená documentos frecuentes para reducir búsquedas manuales.",
+              "Visualizá pendientes por consorcio activo antes de que escalen.",
+              "Convertí consultas y reclamos en casos con estado y prioridad.",
+              "Asociá vecinos, propietarios e inquilinos a unidades funcionales.",
+              "Separá deuda, unidad y ocupante para conservar contexto histórico.",
+              "Ordená proveedores, categorías, FAQs y documentos frecuentes.",
               "Usá automatización como asistencia, no como reemplazo de la gestión humana.",
             ].map((item) => (
               <li key={item} className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-soft motion-reduce:hover:translate-y-0"><span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-brandblue" aria-hidden="true" />{item}</li>
@@ -122,14 +144,14 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="como-funciona" eyebrow="Cómo funciona" title="Un flujo simple para ordenar la atención diaria">
+      <Section id="como-funciona" eyebrow="Cómo funciona" title="Del mensaje aislado al caso administrable">
         <div className="grid gap-5 lg:grid-cols-5">
           {[
-            ["1", "Ingresan consultas y reclamos", "El equipo recibe comunicaciones y las organiza dentro de un inbox operativo."],
-            ["2", "Se clasifican por edificio y unidad", "Cada caso puede asociarse al contexto necesario para evitar perder historial."],
-            ["3", "Se crean tickets y responsables", "Los reclamos se registran con estado y seguimiento para ordenar prioridades."],
-            ["4", "Se asisten consultas frecuentes", "Las respuestas automáticas ayudan con consultas frecuentes. Los casos sensibles pueden ser derivados a un administrador humano."],
-            ["5", "Queda trazabilidad", "El historial permite revisar conversaciones, documentos y acciones realizadas."],
+            ["1", "Elegís el consorcio activo", "El equipo trabaja con el edificio correcto y ve pendientes relevantes para ese contexto."],
+            ["2", "Ubicás la unidad", "La consulta se vincula con unidad funcional, persona relacionada y antecedentes operativos."],
+            ["3", "Registrás el caso", "El reclamo o consulta queda como ticket con estado, tipo, prioridad y seguimiento."],
+            ["4", "Respondés con asistencia", "Las respuestas automáticas ayudan con consultas frecuentes. Los casos sensibles pueden ser derivados a un administrador humano."],
+            ["5", "Dejás trazabilidad", "Las acciones, documentos y cambios quedan pensados para ser consultados por el equipo."],
           ].map(([number, title, text]) => (
             <article key={number} className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-premium motion-reduce:hover:translate-y-0">
               <span className="absolute left-10 top-10 h-full w-px bg-gradient-to-b from-sky-100 to-transparent lg:left-auto lg:right-6 lg:top-6 lg:h-px lg:w-20" aria-hidden="true" />
@@ -141,21 +163,21 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="modulos" eyebrow="Módulos" title="Módulos pensados para la operación de una administradora" className="bg-white">
+      <Section id="modulos" eyebrow="Módulos" title="Módulos que hablan el idioma de una administradora" className="bg-white">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {modules.map(([title, text]) => <Card key={title} title={title}>{text}</Card>)}
         </div>
       </Section>
 
-      <Section title="Más orden para tu equipo, mejor atención para los vecinos">
+      <Section title="Más calma operativa para tu equipo, más claridad para los vecinos">
         <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-8 shadow-soft transition hover:shadow-premium">
           <ul className="grid gap-4 sm:grid-cols-2">
             {[
               "Menos dependencia de chats personales o conversaciones dispersas.",
-              "Más claridad sobre pendientes, responsables y estado de cada reclamo.",
+              "Más claridad sobre pendientes, prioridad y estado de cada reclamo.",
               "Mejor contexto para responder consultas de vecinos y propietarios.",
-              "Documentación más accesible para el equipo autorizado.",
-              "Historial operativo para revisar decisiones y comunicaciones.",
+              "Deudas y expensas observadas desde la unidad funcional.",
+              "Historial operativo para revisar decisiones, cambios y comunicaciones.",
               "Atención más consistente sin perder criterio humano en casos sensibles.",
             ].map((item) => (
               <li key={item} className="flex gap-3 text-slate-700"><span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-brandblue" aria-hidden="true" /><span>{item}</span></li>
@@ -174,8 +196,8 @@ export default function HomePage() {
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <ul className="grid gap-4 text-slate-700 sm:grid-cols-2">
             {[
-              "Accesos controlados para usuarios autorizados.",
-              "Historial y trazabilidad de conversaciones y casos.",
+              "Diseño preparado para accesos controlados de usuarios autorizados.",
+              "Historial y trazabilidad de acciones, conversaciones y casos.",
               "Tratamiento responsable de datos personales ingresados en la plataforma.",
               "No venta de datos personales.",
               "Criterios de minimización: usar la información necesaria para operar el servicio.",
@@ -221,7 +243,7 @@ export default function HomePage() {
           <div className="relative">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ordená la atención diaria de tu administradora con ConsFlow</h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-100">
-              Conocé cómo ConsFlow puede ayudarte a centralizar reclamos, consultas, documentos e historial operativo en un entorno profesional.
+              Conocé cómo ConsFlow puede ayudarte a convertir reclamos, deudas, consultas, documentos y unidades funcionales en una operación más clara y trazable.
             </p>
             <Link className="group mt-8 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-slateblue shadow-soft transition hover:-translate-y-1 hover:bg-calm hover:shadow-premium focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white motion-reduce:hover:translate-y-0" href="/contact">
               Solicitar demo <span className="ml-2 transition group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" aria-hidden="true">→</span>
@@ -235,54 +257,64 @@ export default function HomePage() {
 
 function DashboardMockup() {
   return (
-    <div className="float-soft relative rounded-[2rem] border border-white/80 bg-white/85 p-4 shadow-premium backdrop-blur" aria-label="Vista ilustrativa del panel ConsFlow">
+    <div className="float-soft relative rounded-[2rem] border border-white/80 bg-white/85 p-4 shadow-premium backdrop-blur" aria-label="Vista ilustrativa del panel operativo ConsFlow">
       <div className="absolute -right-6 -top-6 rounded-2xl border border-sky-100 bg-white px-4 py-3 text-sm font-semibold text-slateblue shadow-soft" aria-hidden="true">
-        24 casos ordenados
+        Consorcio activo
       </div>
       <div className="absolute -bottom-5 left-8 hidden rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold text-emerald-800 shadow-soft sm:block" aria-hidden="true">
-        SLA en seguimiento
+        Auditoría visible
       </div>
       <div className="rounded-[1.5rem] bg-gradient-to-br from-slate-50 to-calm/60 p-4">
         <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slateblue">Inbox operativo</p>
-            <p className="mt-1 text-lg font-bold text-ink">Reclamos y consultas</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slateblue">Edificio seleccionado</p>
+            <p className="mt-1 text-lg font-bold text-ink">Consorcio Av. Norte 1248</p>
           </div>
-          <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 shadow-sm">En seguimiento</span>
+          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">3 temas requieren atención</span>
+        </div>
+        <div className="mb-4 grid gap-3 sm:grid-cols-3">
+          {[
+            ["$ 1.84M", "Deuda pendiente"],
+            ["12", "Reclamos abiertos"],
+            ["8", "Unidades con deuda"],
+          ].map(([value, label]) => (
+            <div key={label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <p className="text-lg font-bold text-ink">{value}</p>
+              <p className="mt-1 text-[0.72rem] font-semibold uppercase tracking-wide text-slate-400">{label}</p>
+            </div>
+          ))}
         </div>
         <div className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-3">
-            {["Filtración en palier", "Consulta de expensas", "Solicitud de reglamento"].map((item, index) => (
+            {[
+              ["Deudas vencidas", "5 unidades con saldo pendiente", "bg-rose-500"],
+              ["Reclamos demorados", "2 casos siguen abiertos", "bg-amber-500"],
+              ["Unidades sin inquilino", "Revisar datos del edificio", "bg-sky-500"],
+            ].map(([item, detail, color], index) => (
               <div key={item} className={`rounded-2xl border p-4 transition hover:-translate-y-0.5 hover:shadow-sm motion-reduce:hover:translate-y-0 ${index === 0 ? "border-slateblue bg-white shadow-sm" : "border-slate-200 bg-white/75"}`}>
                 <div className="mb-3 flex items-center justify-between">
-                  <span className={`h-2.5 w-2.5 rounded-full ${index === 0 ? "bg-brandblue" : "bg-slate-300"}`} aria-hidden="true" />
-                  <span className="text-[0.7rem] font-semibold uppercase tracking-wide text-slate-400">#{1248 + index}</span>
+                  <span className={`h-2.5 w-2.5 rounded-full ${color}`} aria-hidden="true" />
+                  <span className="text-[0.7rem] font-semibold uppercase tracking-wide text-slate-400">Requiere atención</span>
                 </div>
                 <p className="text-sm font-semibold text-ink">{item}</p>
-                <p className="mt-1 text-xs text-slate-500">Edificio Norte · Unidad {index + 3}B</p>
+                <p className="mt-1 text-xs text-slate-500">{detail}</p>
               </div>
             ))}
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
             <div className="flex items-center justify-between gap-3">
-              <p className="text-sm font-semibold text-ink">Ticket #1248</p>
-              <span className="rounded-full bg-calm px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-wide text-slateblue">Alta prioridad</span>
+              <p className="text-sm font-semibold text-ink">Unidad 4B</p>
+              <span className="rounded-full bg-calm px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-wide text-slateblue">Historial operativo</span>
             </div>
-            <p className="mt-2 text-sm leading-6 text-slate-600">Reclamo registrado, asignado y vinculado al historial de la unidad funcional.</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600">La deuda queda asociada a la unidad funcional y los reclamos se consultan con contexto del edificio.</p>
             <div className="mt-5 space-y-3">
-              {["Estado: abierto", "Responsable: administración", "Documento vinculado: acta de mantenimiento"].map((item) => (
+              {["Deuda: expensas junio", "Ticket: filtración en palier", "Contacto: inquilino asociado"].map((item) => (
                 <div key={item} className="flex items-center gap-3 rounded-xl bg-calm px-4 py-3 text-sm text-slate-700"><span className="h-2 w-2 rounded-full bg-brandblue" aria-hidden="true" />{item}</div>
               ))}
             </div>
             <div className="mt-5 rounded-2xl border border-dashed border-sky-200 bg-sky-50/60 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slateblue">Trazabilidad</p>
-              <div className="mt-3 flex items-center gap-2" aria-hidden="true">
-                <span className="h-2 w-2 rounded-full bg-brandblue" />
-                <span className="h-px flex-1 bg-sky-200" />
-                <span className="h-2 w-2 rounded-full bg-brandblue" />
-                <span className="h-px flex-1 bg-sky-200" />
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              </div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-slateblue">Última actividad</p>
+              <p className="mt-2 text-xs leading-5 text-slate-600">Estado cambiado a “En proceso” · pago confirmado · documento revisado</p>
             </div>
           </div>
         </div>
