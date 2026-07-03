@@ -28,8 +28,12 @@ export default function ContactPage() {
             <h2 className="text-lg font-semibold text-ink">Contacto alternativo</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               También podés escribirnos a {" "}
-              <a className="font-semibold text-slateblue underline decoration-slateblue/30 underline-offset-4 hover:text-ink" href="mailto:contacto@consflow.com.ar">
-                contacto@consflow.com.ar
+              <a className="font-semibold text-slateblue underline decoration-slateblue/30 underline-offset-4 hover:text-ink" href="mailto:theokropas1@gmail.com">
+                theokropas1@gmail.com
+              </a>
+              <span className="mx-2 text-slate-400">/</span>
+              <a className="font-semibold text-slateblue underline decoration-slateblue/30 underline-offset-4 hover:text-ink" href="mailto:ramakwon07@gmail.com">
+                ramakwon07@gmail.com
               </a>
               . Responderemos por este canal o por los medios de contacto que indiques en tu consulta.
             </p>

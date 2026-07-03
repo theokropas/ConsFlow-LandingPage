@@ -40,7 +40,7 @@ export function ContactForm() {
     <form noValidate onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-soft sm:p-8">
       {submitted ? (
         <div className="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-900" role="status">
-          Gracias. En esta versión, el formulario valida los datos pero todavía no envía la solicitud. Para contacto real, escribinos a contacto@consflow.com.ar. Conectaremos este formulario al backend seguro de ConsFlow en la próxima etapa.
+          Gracias. En esta versión, el formulario valida los datos pero todavía no envía la solicitud. Para contacto real, escribinos a theokropas1@gmail.com o ramakwon07@gmail.com. Conectaremos este formulario al backend seguro de ConsFlow en la próxima etapa.
         </div>
       ) : null}
 

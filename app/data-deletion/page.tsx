@@ -19,7 +19,7 @@ export default function DataDeletionPage() {
       <h2>Solicitud de eliminación</h2>
       <p>
         Si querés solicitar la eliminación de datos personales asociados a ConsFlow, escribinos a {" "}
-        <a href="mailto:contacto@consflow.com.ar">contacto@consflow.com.ar</a> con el asunto “Solicitud de eliminación de datos”.
+        <a href="mailto:theokropas1@gmail.com">theokropas1@gmail.com</a> o <a href="mailto:ramakwon07@gmail.com">ramakwon07@gmail.com</a> con el asunto “Solicitud de eliminación de datos”.
       </p>
 
       <h2>Datos requeridos para procesar la solicitud</h2>

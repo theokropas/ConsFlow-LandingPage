@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       <h2>1. Responsable del tratamiento</h2>
       <p>
         ConsFlow es una plataforma SaaS/CRM para administradoras de consorcios. Para consultas vinculadas a privacidad podés escribir a {" "}
-        <a href="mailto:contacto@consflow.com.ar">contacto@consflow.com.ar</a>.
+        <a href="mailto:theokropas1@gmail.com">theokropas1@gmail.com</a> o <a href="mailto:ramakwon07@gmail.com">ramakwon07@gmail.com</a>.
       </p>
 
       <h2>2. Datos que podemos tratar</h2>
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
       <h2>8. Derechos de las personas</h2>
       <p>
         Podés solicitar acceso, rectificación, actualización o eliminación de tus datos personales escribiendo a {" "}
-        <a href="mailto:contacto@consflow.com.ar">contacto@consflow.com.ar</a>. Es posible que solicitemos información adicional para verificar identidad y alcance de la solicitud.
+        <a href="mailto:theokropas1@gmail.com">theokropas1@gmail.com</a> o <a href="mailto:ramakwon07@gmail.com">ramakwon07@gmail.com</a>. Es posible que solicitemos información adicional para verificar identidad y alcance de la solicitud.
       </p>
 
       <h2>9. Cambios en esta política</h2>

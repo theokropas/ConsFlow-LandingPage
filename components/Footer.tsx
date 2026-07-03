@@ -41,8 +41,12 @@ export function Footer() {
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-ink">Contacto</h2>
           <p className="mt-4 text-sm text-slate-600">
-            <a className="transition hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href="mailto:contacto@consflow.com.ar">
-              contacto@consflow.com.ar
+            <a className="transition hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href="mailto:theokropas1@gmail.com">
+              theokropas1@gmail.com
+            </a>
+            <span className="mx-2 text-slate-400">/</span>
+            <a className="transition hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href="mailto:ramakwon07@gmail.com">
+              ramakwon07@gmail.com
             </a>
           </p>
           <p className="mt-6 text-xs leading-5 text-slate-500">
