@@ -64,12 +64,12 @@ export default function TermsPage() {
       <h2>8. Privacidad</h2>
       <p>
         El tratamiento de datos personales se rige por la Política de Privacidad disponible en este sitio. Para consultas podés escribir a {" "}
-        <a href="mailto:theokropas1@gmail.com">theokropas1@gmail.com</a> o <a href="mailto:ramakwon07@gmail.com">ramakwon07@gmail.com</a>.
+        <a href="mailto:contacto.consflow@gmail.com">contacto.consflow@gmail.com</a>.
       </p>
 
       <h2>9. Contacto</h2>
       <p>
-        Para consultas sobre estos términos, escribinos a <a href="mailto:theokropas1@gmail.com">theokropas1@gmail.com</a> o <a href="mailto:ramakwon07@gmail.com">ramakwon07@gmail.com</a>.
+        Para consultas sobre estos términos, escribinos a <a href="mailto:contacto.consflow@gmail.com">contacto.consflow@gmail.com</a>.
       </p>
     </LegalPageLayout>
   );

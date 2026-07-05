@@ -39,18 +39,18 @@ export function ContactForm() {
   return (
     <form noValidate onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-soft sm:p-8">
       {submitted ? (
-        <div className="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-900" role="status">
-          Gracias. En esta versión, el formulario valida los datos pero todavía no envía la solicitud. Para contacto real, escribinos a theokropas1@gmail.com o ramakwon07@gmail.com. Conectaremos este formulario al backend seguro de ConsFlow en la próxima etapa.
+        <div className="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-900" role="status" aria-live="polite">
+          Gracias. En esta versión, el formulario valida los datos pero todavía no envía la solicitud. Para contacto real, escribinos a contacto.consflow@gmail.com. Conectaremos este formulario al backend seguro de ConsFlow en la próxima etapa.
         </div>
       ) : null}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Nombre completo" name="name" error={errors.name} autoComplete="name" />
         <Field label="Administradora / empresa" name="company" error={errors.company} autoComplete="organization" />
-        <Field label="Email" name="email" type="email" error={errors.email} autoComplete="email" />
-        <Field label="Teléfono" name="phone" type="tel" error={errors.phone} autoComplete="tel" />
-        <Field label="Cantidad aproximada de edificios" name="buildings" type="number" min="0" error={errors.buildings} />
-        <Field label="Cantidad aproximada de unidades funcionales" name="units" type="number" min="0" error={errors.units} />
+        <Field label="Email" name="email" type="email" error={errors.email} autoComplete="email" inputMode="email" spellCheck={false} />
+        <Field label="Teléfono" name="phone" type="tel" error={errors.phone} autoComplete="tel" inputMode="tel" />
+        <Field label="Cantidad aproximada de edificios" name="buildings" type="number" min="0" error={errors.buildings} inputMode="numeric" />
+        <Field label="Cantidad aproximada de unidades funcionales" name="units" type="number" min="0" error={errors.units} inputMode="numeric" />
       </div>
 
       <div className="mt-5">
@@ -62,7 +62,7 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm transition placeholder:text-slate-400 focus:border-slateblue focus:outline focus:outline-2 focus:outline-slateblue/30"
+          className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-slate-400 focus:border-slateblue focus:outline focus:outline-2 focus:outline-slateblue/30"
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
         />
@@ -86,7 +86,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-slateblue px-6 py-3 text-base font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-ink hover:shadow-premium focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slateblue motion-reduce:hover:translate-y-0 sm:w-auto"
+        className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-slateblue px-6 py-3 text-base font-semibold text-white shadow-soft transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-ink hover:shadow-premium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slateblue motion-reduce:hover:translate-y-0 sm:w-auto"
       >
         Enviar solicitud
       </button>
@@ -101,6 +101,8 @@ function Field({
   error,
   autoComplete,
   min,
+  inputMode,
+  spellCheck,
 }: {
   label: string;
   name: string;
@@ -108,6 +110,8 @@ function Field({
   error?: string;
   autoComplete?: string;
   min?: string;
+  inputMode?: "email" | "tel" | "numeric";
+  spellCheck?: boolean;
 }) {
   return (
     <div>
@@ -121,7 +125,9 @@ function Field({
         min={min}
         required
         autoComplete={autoComplete}
-        className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm transition placeholder:text-slate-400 focus:border-slateblue focus:outline focus:outline-2 focus:outline-slateblue/30"
+        inputMode={inputMode}
+        spellCheck={spellCheck}
+        className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-slate-400 focus:border-slateblue focus:outline focus:outline-2 focus:outline-slateblue/30"
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${name}-error` : undefined}
       />

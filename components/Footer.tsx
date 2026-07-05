@@ -31,7 +31,7 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-slate-600">
             {footerLinks.map((link) => (
               <li key={link.href}>
-                <Link className="transition hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href={link.href}>
+                <Link className="transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-slateblue" href={link.href}>
                   {link.label}
                 </Link>
               </li>
@@ -40,13 +40,9 @@ export function Footer() {
         </nav>
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-ink">Contacto</h2>
-          <p className="mt-4 text-sm text-slate-600">
-            <a className="transition hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href="mailto:theokropas1@gmail.com">
-              theokropas1@gmail.com
-            </a>
-            <span className="mx-2 text-slate-400">/</span>
-            <a className="transition hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href="mailto:ramakwon07@gmail.com">
-              ramakwon07@gmail.com
+          <p className="mt-4 break-words text-sm text-slate-600">
+            <a className="transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-slateblue" href="mailto:contacto.consflow@gmail.com">
+              contacto.consflow@gmail.com
             </a>
           </p>
           <p className="mt-6 text-xs leading-5 text-slate-500">

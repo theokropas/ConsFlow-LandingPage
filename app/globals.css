@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+* {
+  -webkit-tap-highlight-color: rgba(47, 129, 223, 0.14);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -23,6 +27,21 @@ body {
     radial-gradient(circle at 90% 0%, rgba(31, 58, 95, 0.08), transparent 24rem),
     var(--background);
   color: var(--foreground);
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 a,
@@ -72,6 +91,12 @@ textarea {
   text-underline-offset: 4px;
 }
 
+.legal-content a:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid #1f3a5f;
+  outline-offset: 3px;
+}
+
 .section-reveal,
 .hero-reveal {
   animation: fade-up 0.72s ease-out both;
@@ -83,6 +108,38 @@ textarea {
 
 .pulse-soft {
   animation: pulse-soft 4.5s ease-in-out infinite;
+}
+
+.flow-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.flow-line::after {
+  animation: scan-line 3.8s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(47, 129, 223, 0.72), transparent);
+  content: "";
+  height: 100%;
+  left: -40%;
+  position: absolute;
+  top: 0;
+  width: 40%;
+}
+
+.stagger-in {
+  animation: fade-up 0.72s ease-out both;
+}
+
+.stagger-1 {
+  animation-delay: 90ms;
+}
+
+.stagger-2 {
+  animation-delay: 170ms;
+}
+
+.stagger-3 {
+  animation-delay: 250ms;
 }
 
 @keyframes fade-up {
@@ -116,6 +173,15 @@ textarea {
   }
 }
 
+@keyframes scan-line {
+  0%, 18% {
+    transform: translateX(0);
+  }
+  58%, 100% {
+    transform: translateX(360%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -128,5 +194,9 @@ textarea {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .flow-line::after {
+    display: none;
   }
 }

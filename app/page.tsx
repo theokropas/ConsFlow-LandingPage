@@ -6,13 +6,15 @@ import { Card, Section } from "@/components/Section";
 export const metadata: Metadata = {
   title: "ConsFlow | CRM con WhatsApp para administradoras de consorcios",
   description:
-    "Ordená edificios, unidades funcionales, deudas, reclamos, consultas y trazabilidad operativa en una plataforma para administradoras de consorcios.",
+    "Ordená WhatsApp, edificios, unidades funcionales, vecinos, reclamos, documentos y trazabilidad en un CRM operativo para administradoras de consorcios.",
   openGraph: {
     title: "ConsFlow | CRM con WhatsApp para administradoras de consorcios",
     description:
-      "Ordená edificios, unidades funcionales, deudas, reclamos, consultas y trazabilidad operativa en una plataforma para administradoras de consorcios.",
+      "Ordená WhatsApp, edificios, unidades funcionales, vecinos, reclamos, documentos y trazabilidad en un CRM operativo para administradoras de consorcios.",
   },
 };
+
+const heroChips = ["WhatsApp con contexto", "Tickets con estado", "Historial por unidad"];
 
 const problemCards = [
   ["WhatsApps desordenados", "Mensajes importantes quedan mezclados con conversaciones del día a día, sin prioridad ni contexto administrativo."],
@@ -51,39 +53,39 @@ const audiences = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero-reveal relative overflow-hidden bg-[radial-gradient(circle_at_20%_15%,rgba(47,129,223,0.14),transparent_28rem),radial-gradient(circle_at_90%_5%,rgba(31,58,95,0.12),transparent_24rem),linear-gradient(180deg,#ffffff_0%,#eef6fb_100%)] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div className="absolute left-6 top-20 hidden h-24 w-24 rounded-full border border-sky-200/70 bg-white/50 blur-[1px] lg:block pulse-soft" aria-hidden="true" />
+      <section className="hero-reveal relative isolate overflow-hidden bg-[radial-gradient(circle_at_18%_12%,rgba(47,129,223,0.18),transparent_28rem),radial-gradient(circle_at_88%_8%,rgba(16,32,51,0.12),transparent_24rem),linear-gradient(180deg,#ffffff_0%,#eef6fb_100%)] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(31,58,95,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(31,58,95,0.045)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_82%)]" aria-hidden="true" />
+        <div className="pulse-soft absolute left-6 top-20 hidden h-24 w-24 rounded-full border border-sky-200/70 bg-white/50 blur-[1px] lg:block" aria-hidden="true" />
         <div className="absolute bottom-12 right-10 hidden h-32 w-32 rounded-full bg-sky-200/20 blur-2xl lg:block" aria-hidden="true" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-3 py-2 pr-4 text-sm font-medium text-slateblue shadow-sm backdrop-blur">
+          <div className="min-w-0">
+            <div className="mb-5 inline-flex max-w-full items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-3 py-2 pr-4 text-sm font-medium text-slateblue shadow-sm backdrop-blur">
               <BrandLogo size="sm" priority />
-              <span>Backoffice operativo para administradoras de consorcios</span>
+              <span className="min-w-0 truncate">Backoffice operativo para administradoras de consorcios</span>
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-ink text-balance sm:text-5xl lg:text-6xl">
               El CRM con WhatsApp para administradoras de consorcios
             </h1>
             <p className="mt-6 text-xl leading-8 text-slate-700">
               Centralizá reclamos, consultas, documentos, unidades funcionales e historial de conversaciones en una sola plataforma.
             </p>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
-              Diseñado para administradoras que necesitan pasar de mensajes sueltos a una mesa de control: consorcios activos, unidades, deudas, reclamos y trazabilidad con criterio humano.
+            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+              WhatsApp sigue siendo el canal principal, pero ahora cada conversación puede quedar asociada al vecino, unidad funcional y edificio correcto.
+            </p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+              Menos mensajes perdidos, menos reclamos desordenados y más seguimiento para el equipo administrativo.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="group inline-flex items-center justify-center rounded-full bg-slateblue px-6 py-3 text-base font-semibold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-ink hover:shadow-premium focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slateblue motion-reduce:hover:translate-y-0" href="/contact">
-                Solicitar una demo <span className="ml-2 transition group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" aria-hidden="true">→</span>
+              <Link className="group inline-flex items-center justify-center rounded-full bg-slateblue px-6 py-3 text-base font-semibold text-white shadow-soft transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:bg-ink hover:shadow-premium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slateblue motion-reduce:hover:translate-y-0" href="/contact">
+                Solicitar una demo <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" aria-hidden="true">→</span>
               </Link>
-              <Link className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/90 px-6 py-3 text-base font-semibold text-ink shadow-sm transition duration-300 hover:-translate-y-1 hover:border-slateblue hover:text-slateblue hover:shadow-soft focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slateblue motion-reduce:hover:translate-y-0" href="#como-funciona">
+              <Link className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/90 px-6 py-3 text-base font-semibold text-ink shadow-sm transition-[transform,border-color,color,box-shadow] duration-300 hover:-translate-y-1 hover:border-slateblue hover:text-slateblue hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slateblue motion-reduce:hover:translate-y-0" href="#como-funciona">
                 Ver cómo funciona
               </Link>
             </div>
             <div className="mt-8 grid max-w-2xl gap-3 text-sm text-slate-600 sm:grid-cols-3">
-              {[
-                "Consorcio activo",
-                "Deudas por unidad",
-                "Reclamos con estado",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-white/80 bg-white/70 px-4 py-3 shadow-sm backdrop-blur">
+              {heroChips.map((item, index) => (
+                <div key={item} className={`stagger-in stagger-${index + 1} rounded-2xl border border-white/80 bg-white/75 px-4 py-3 shadow-sm backdrop-blur`}>
                   <span className="mr-2 inline-block h-2 w-2 rounded-full bg-brandblue" aria-hidden="true" />{item}
                 </div>
               ))}
@@ -138,7 +140,7 @@ export default function HomePage() {
               "Ordená proveedores, categorías, FAQs y documentos frecuentes.",
               "Usá automatización como asistencia, no como reemplazo de la gestión humana.",
             ].map((item) => (
-              <li key={item} className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-soft motion-reduce:hover:translate-y-0"><span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-brandblue" aria-hidden="true" />{item}</li>
+              <li key={item} className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-soft motion-reduce:hover:translate-y-0"><span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-brandblue" aria-hidden="true" />{item}</li>
             ))}
           </ul>
         </div>
@@ -153,7 +155,7 @@ export default function HomePage() {
             ["4", "Respondés con asistencia", "Las respuestas automáticas ayudan con consultas frecuentes. Los casos sensibles pueden ser derivados a un administrador humano."],
             ["5", "Dejás trazabilidad", "Las acciones, documentos y cambios quedan pensados para ser consultados por el equipo."],
           ].map(([number, title, text]) => (
-            <article key={number} className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-premium motion-reduce:hover:translate-y-0">
+            <article key={number} className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-premium motion-reduce:hover:translate-y-0">
               <span className="absolute left-10 top-10 h-full w-px bg-gradient-to-b from-sky-100 to-transparent lg:left-auto lg:right-6 lg:top-6 lg:h-px lg:w-20" aria-hidden="true" />
               <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-slateblue to-brandblue text-sm font-bold text-white shadow-sm">{number}</span>
               <h3 className="mt-5 text-lg font-semibold text-ink">{title}</h3>
@@ -170,7 +172,7 @@ export default function HomePage() {
       </Section>
 
       <Section title="Más calma operativa para tu equipo, más claridad para los vecinos">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-8 shadow-soft transition hover:shadow-premium">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-8 shadow-soft transition-shadow duration-300 hover:shadow-premium">
           <ul className="grid gap-4 sm:grid-cols-2">
             {[
               "Menos dependencia de chats personales o conversaciones dispersas.",
@@ -202,7 +204,7 @@ export default function HomePage() {
               "No venta de datos personales.",
               "Criterios de minimización: usar la información necesaria para operar el servicio.",
               "Buenas prácticas frontend: sin secretos expuestos ni tracking invasivo en esta landing.",
-            ].map((item) => <li key={item} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-soft motion-reduce:hover:translate-y-0">{item}</li>)}
+            ].map((item) => <li key={item} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-soft motion-reduce:hover:translate-y-0">{item}</li>)}
           </ul>
           <aside className="relative overflow-hidden rounded-3xl border border-sky-100 bg-gradient-to-br from-calm via-white to-white p-8 text-slate-700 shadow-soft">
             <span className="absolute right-6 top-6 h-16 w-16 rounded-full border border-brandblue/20" aria-hidden="true" />
@@ -217,7 +219,7 @@ export default function HomePage() {
       </Section>
 
       <Section title="Automatización útil, sin perder control humano">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-soft transition hover:shadow-premium">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-soft transition-shadow duration-300 hover:shadow-premium">
           <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-calm text-slateblue" aria-hidden="true">
             <span className="h-6 w-6 rounded-full border-2 border-current border-r-transparent" />
           </div>
@@ -245,8 +247,8 @@ export default function HomePage() {
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-100">
               Conocé cómo ConsFlow puede ayudarte a convertir reclamos, deudas, consultas, documentos y unidades funcionales en una operación más clara y trazable.
             </p>
-            <Link className="group mt-8 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-slateblue shadow-soft transition hover:-translate-y-1 hover:bg-calm hover:shadow-premium focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white motion-reduce:hover:translate-y-0" href="/contact">
-              Solicitar demo <span className="ml-2 transition group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" aria-hidden="true">→</span>
+            <Link className="group mt-8 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-slateblue shadow-soft transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:bg-calm hover:shadow-premium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:hover:translate-y-0" href="/contact">
+              Solicitar demo <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -257,29 +259,36 @@ export default function HomePage() {
 
 function DashboardMockup() {
   return (
-    <div className="float-soft relative rounded-[2rem] border border-white/80 bg-white/85 p-4 shadow-premium backdrop-blur" aria-label="Vista ilustrativa del panel operativo ConsFlow">
-      <div className="absolute -right-6 -top-6 rounded-2xl border border-sky-100 bg-white px-4 py-3 text-sm font-semibold text-slateblue shadow-soft" aria-hidden="true">
+    <div className="float-soft relative min-w-0 rounded-[2rem] border border-white/80 bg-white/88 p-3 shadow-premium backdrop-blur sm:p-4" aria-label="Vista ilustrativa del panel operativo ConsFlow">
+      <div className="absolute -right-3 -top-5 hidden rounded-2xl border border-sky-100 bg-white px-4 py-3 text-sm font-semibold text-slateblue shadow-soft sm:block" aria-hidden="true">
         Consorcio activo
       </div>
       <div className="absolute -bottom-5 left-8 hidden rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold text-emerald-800 shadow-soft sm:block" aria-hidden="true">
         Auditoría visible
       </div>
       <div className="rounded-[1.5rem] bg-gradient-to-br from-slate-50 to-calm/60 p-4">
+        <div className="mb-4 grid gap-2 text-xs font-semibold text-slate-600 sm:grid-cols-[1fr_40px_1fr_40px_1fr] sm:items-center">
+          <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3 shadow-sm">WhatsApp</div>
+          <div className="flow-line hidden h-px rounded-full bg-sky-100 sm:block" aria-hidden="true" />
+          <div className="rounded-2xl border border-slateblue/20 bg-slateblue px-3 py-3 text-white shadow-sm">ConsFlow</div>
+          <div className="flow-line hidden h-px rounded-full bg-sky-100 sm:block" aria-hidden="true" />
+          <div className="rounded-2xl border border-emerald-100 bg-white px-3 py-3 text-emerald-800 shadow-sm">Ticket + historial</div>
+        </div>
         <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-4">
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-wide text-slateblue">Edificio seleccionado</p>
-            <p className="mt-1 text-lg font-bold text-ink">Consorcio Av. Norte 1248</p>
+            <p className="mt-1 truncate text-lg font-bold text-ink">Edificio San Martín</p>
           </div>
-          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">3 temas requieren atención</span>
+          <span className="ml-3 shrink-0 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">3 prioridades</span>
         </div>
         <div className="mb-4 grid gap-3 sm:grid-cols-3">
           {[
-            ["$ 1.84M", "Deuda pendiente"],
+            ["8", "Unidades con saldo"],
             ["12", "Reclamos abiertos"],
-            ["8", "Unidades con deuda"],
+            ["4", "Documentos activos"],
           ].map(([value, label]) => (
-            <div key={label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-              <p className="text-lg font-bold text-ink">{value}</p>
+            <div key={label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-soft motion-reduce:hover:translate-y-0">
+              <p className="text-lg font-bold tabular-nums text-ink">{value}</p>
               <p className="mt-1 text-[0.72rem] font-semibold uppercase tracking-wide text-slate-400">{label}</p>
             </div>
           ))}
@@ -291,10 +300,10 @@ function DashboardMockup() {
               ["Reclamos demorados", "2 casos siguen abiertos", "bg-amber-500"],
               ["Unidades sin inquilino", "Revisar datos del edificio", "bg-sky-500"],
             ].map(([item, detail, color], index) => (
-              <div key={item} className={`rounded-2xl border p-4 transition hover:-translate-y-0.5 hover:shadow-sm motion-reduce:hover:translate-y-0 ${index === 0 ? "border-slateblue bg-white shadow-sm" : "border-slate-200 bg-white/75"}`}>
+              <div key={item} className={`rounded-2xl border p-4 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-sm motion-reduce:hover:translate-y-0 ${index === 0 ? "border-slateblue bg-white shadow-sm" : "border-slate-200 bg-white/75"}`}>
                 <div className="mb-3 flex items-center justify-between">
                   <span className={`h-2.5 w-2.5 rounded-full ${color}`} aria-hidden="true" />
-                  <span className="text-[0.7rem] font-semibold uppercase tracking-wide text-slate-400">Requiere atención</span>
+                  <span className="text-[0.7rem] font-semibold uppercase tracking-wide text-slate-400">Seguimiento</span>
                 </div>
                 <p className="text-sm font-semibold text-ink">{item}</p>
                 <p className="mt-1 text-xs text-slate-500">{detail}</p>
@@ -303,18 +312,18 @@ function DashboardMockup() {
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
             <div className="flex items-center justify-between gap-3">
-              <p className="text-sm font-semibold text-ink">Unidad 4B</p>
+              <p className="text-sm font-semibold text-ink">UF 4B</p>
               <span className="rounded-full bg-calm px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-wide text-slateblue">Historial operativo</span>
             </div>
             <p className="mt-2 text-sm leading-6 text-slate-600">La deuda queda asociada a la unidad funcional y los reclamos se consultan con contexto del edificio.</p>
             <div className="mt-5 space-y-3">
-              {["Deuda: expensas junio", "Ticket: filtración en palier", "Contacto: inquilino asociado"].map((item) => (
+              {["Consulta: expensas de junio", "Ticket: no funciona el ascensor", "Contexto: vecino y unidad asociados"].map((item) => (
                 <div key={item} className="flex items-center gap-3 rounded-xl bg-calm px-4 py-3 text-sm text-slate-700"><span className="h-2 w-2 rounded-full bg-brandblue" aria-hidden="true" />{item}</div>
               ))}
             </div>
             <div className="mt-5 rounded-2xl border border-dashed border-sky-200 bg-sky-50/60 p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-slateblue">Última actividad</p>
-              <p className="mt-2 text-xs leading-5 text-slate-600">Estado cambiado a “En proceso” · pago confirmado · documento revisado</p>
+              <p className="mt-2 text-xs leading-5 text-slate-600">Estado cambiado a “En proceso” · documento revisado · acción registrada</p>
             </div>
           </div>
         </div>

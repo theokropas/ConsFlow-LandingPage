@@ -10,23 +10,26 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Centralizá reclamos, consultas, documentos, unidades funcionales e historial de conversaciones en una sola plataforma para administradoras de consorcios.",
+    "ConsFlow ordena WhatsApp, reclamos, unidades funcionales, vecinos, documentos y trazabilidad en un CRM operativo para administradoras de consorcios.",
   openGraph: {
     type: "website",
     siteName: "ConsFlow",
     title: "ConsFlow | CRM con WhatsApp para administradoras de consorcios",
     description:
-      "Centralizá reclamos, consultas, documentos, unidades funcionales e historial de conversaciones en una sola plataforma para administradoras de consorcios.",
+      "ConsFlow ordena WhatsApp, reclamos, unidades funcionales, vecinos, documentos y trazabilidad en un CRM operativo para administradoras de consorcios.",
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es-AR">
-      <body className="min-h-screen font-sans antialiased">
+      <body className="min-h-screen overflow-x-hidden font-sans antialiased">
+        <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink focus:shadow-premium focus:outline focus:outline-2 focus:outline-slateblue">
+          Saltar al contenido principal
+        </a>
         <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="contenido" className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>
