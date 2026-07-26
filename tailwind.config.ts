@@ -8,14 +8,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#102033",
-        slateblue: "#1f3a5f",
-        brandblue: "#2f81df",
-        calm: "#eef6fb",
+        ink: "var(--ink)",
+        navy: "#102a43",
+        brand: "var(--brand)",
+        link: "var(--link)",
+        steel: "var(--steel)",
+        canvas: "var(--canvas)",
+        surface: "var(--surface)",
+        line: "var(--line)",
+        softblue: "var(--soft-blue)",
+      },
+      fontFamily: {
+        sans: ["var(--font-geist)", "Arial", "sans-serif"],
+        display: ["var(--font-manrope)", "Arial", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 18px 45px rgba(16, 32, 51, 0.08)",
-        premium: "0 24px 70px rgba(16, 32, 51, 0.14)",
+        ambient: "0 24px 70px rgba(16, 42, 67, 0.10)",
+        menu: "0 20px 50px rgba(12, 27, 42, 0.14)",
       },
     },
   },

@@ -3,26 +3,29 @@ import Link from "next/link";
 export function LegalPageLayout({
   title,
   subtitle,
+  updatedAt,
+  draft = false,
   children,
 }: {
   title: string;
   subtitle: string;
+  updatedAt: string;
+  draft?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-[radial-gradient(circle_at_top_left,rgba(47,129,223,0.10),transparent_34%),linear-gradient(180deg,#f8fbfd,#eef6fb)] px-4 py-14 sm:px-6 lg:px-8">
-      <article className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-soft sm:p-10">
-        <Link className="text-sm font-medium text-slateblue hover:text-ink focus:outline focus:outline-2 focus:outline-slateblue" href="/">
-          ← Volver al inicio
+    <div className="bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      <article className="mx-auto max-w-3xl">
+        <Link className="inline-flex min-h-11 items-center rounded-md text-sm font-bold text-navy hover:text-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" href="/">
+          <span aria-hidden="true">←</span><span className="ml-2">Volver al inicio</span>
         </Link>
-        <header className="mt-8 border-b border-slate-200 pb-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slateblue">ConsFlow</p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink">{title}</h1>
-          <p className="mt-4 text-lg leading-8 text-slate-600">{subtitle}</p>
+        <header className="mt-8 border-b border-line pb-8">
+          {draft ? <p className="mb-5 inline-flex rounded-full border border-[#e4bd73] bg-[#fff8e8] px-3 py-1.5 text-xs font-bold text-[#75510b]">Versión inicial pendiente de revisión legal</p> : null}
+          <h1 className="text-4xl font-extrabold tracking-[-0.035em] text-ink sm:text-5xl">{title}</h1>
+          <p className="mt-5 text-lg leading-8 text-steel">{subtitle}</p>
+          <p className="mt-4 text-sm text-steel">Última actualización: {updatedAt}</p>
         </header>
-        <div className="legal-content mt-8">
-          {children}
-        </div>
+        <div className="legal-content mt-8">{children}</div>
       </article>
     </div>
   );
