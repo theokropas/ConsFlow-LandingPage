@@ -1,94 +1,156 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import Link from "next/link";
+import { FormEvent, useRef, useState } from "react";
+import { ContactErrors, MARKETING_OPT_IN_TEXT, validateContactInput } from "@/lib/contact";
+import { siteConfig } from "@/lib/site";
 
-type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "buildings" | "units" | "message" | "consent", string>>;
-
-const optInText =
-  "Acepto que ConsFlow me contacte por WhatsApp, email o teléfono para responder mi consulta y enviarme información relacionada con sus servicios. Puedo solicitar dejar de recibir comunicaciones en cualquier momento.";
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<ContactErrors>({});
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [serverMessage, setServerMessage] = useState("");
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+  const submissionIdRef = useRef("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const nextErrors: FormErrors = {};
-    const email = String(formData.get("email") ?? "").trim();
-    const consent = formData.get("consent") === "on";
+    const input = Object.fromEntries(formData.entries());
+    const validation = validateContactInput(input);
 
-    if (!String(formData.get("name") ?? "").trim()) nextErrors.name = "Ingresá tu nombre completo.";
-    if (!String(formData.get("company") ?? "").trim()) nextErrors.company = "Ingresá el nombre de la administradora o empresa.";
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Ingresá un email válido.";
-    if (!String(formData.get("phone") ?? "").trim()) nextErrors.phone = "Ingresá un teléfono de contacto.";
-    if (!String(formData.get("buildings") ?? "").trim()) nextErrors.buildings = "Indicá la cantidad aproximada de edificios.";
-    if (!String(formData.get("units") ?? "").trim()) nextErrors.units = "Indicá la cantidad aproximada de unidades funcionales.";
-    if (!String(formData.get("message") ?? "").trim()) nextErrors.message = "Contanos brevemente qué necesitás resolver.";
-    if (!consent) nextErrors.consent = "Debés aceptar el consentimiento para que podamos contactarte.";
+    setStatus("idle");
+    setServerMessage("");
+    setErrors(validation.errors);
 
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
-      // TODO: Conectar este formulario al backend real de ConsFlow cuando exista un endpoint seguro documentado.
-      setSubmitted(true);
+    if (Object.keys(validation.errors).length > 0) {
+      requestAnimationFrame(() => errorSummaryRef.current?.focus());
+      return;
+    }
+
+    setStatus("submitting");
+    if (!submissionIdRef.current) submissionIdRef.current = crypto.randomUUID();
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...validation.data,
+          whatsappContact: formData.get("whatsappContact") === "on",
+          marketing: formData.get("marketing") === "on",
+          submissionId: submissionIdRef.current,
+        }),
+      });
+      const result = await response.json() as { message?: string; errors?: ContactErrors };
+
+      if (!response.ok) {
+        setErrors(result.errors ?? {});
+        setServerMessage(result.message ?? "No pudimos enviar la solicitud.");
+        setStatus("error");
+        requestAnimationFrame(() => errorSummaryRef.current?.focus());
+        return;
+      }
+
       form.reset();
+      submissionIdRef.current = "";
+      setErrors({});
+      setStatus("success");
+      requestAnimationFrame(() => successRef.current?.focus());
+    } catch {
+      setServerMessage(`No pudimos enviar la solicitud. Intentá nuevamente o escribinos a ${siteConfig.email}.`);
+      setStatus("error");
+      requestAnimationFrame(() => errorSummaryRef.current?.focus());
     }
   }
 
+  const errorEntries = Object.entries(errors).filter((entry): entry is [string, string] => Boolean(entry[1]));
+
   return (
-    <form noValidate onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-soft sm:p-8">
-      {submitted ? (
-        <div className="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-900" role="status" aria-live="polite">
-          Gracias. En esta versión, el formulario valida los datos pero todavía no envía la solicitud. Para contacto real, escribinos a contacto.consflow@gmail.com. Conectaremos este formulario al backend seguro de ConsFlow en la próxima etapa.
+    <form
+      action="/api/contact"
+      method="post"
+      noValidate
+      onSubmit={handleSubmit}
+      className="contact-form rounded-2xl border border-line bg-white p-5 sm:p-8"
+      data-status={status}
+      aria-busy={status === "submitting"}
+    >
+      <div aria-live="polite" aria-atomic="true">
+        {status === "success" ? (
+          <div ref={successRef} tabIndex={-1} className="form-status-enter mb-6 rounded-xl border border-[#9ad3bc] bg-[#edf8f3] p-4 text-sm leading-6 text-[#0e5c40] focus:outline focus:outline-2 focus:outline-[#147a55]" role="status">
+            Recibimos tu solicitud. Te contactaremos por el email o teléfono que indicaste.
+          </div>
+        ) : null}
+      </div>
+
+      {(errorEntries.length > 0 || status === "error") ? (
+        <div ref={errorSummaryRef} tabIndex={-1} className="form-status-enter mb-6 rounded-xl border border-[#efb3ad] bg-[#fff4f2] p-4 text-sm text-[#8f1d14] focus:outline focus:outline-2 focus:outline-[#b42318]" role="alert" aria-live="assertive">
+          <p className="font-bold">{status === "error" ? "No pudimos enviar la solicitud todavía." : "Revisá los campos indicados."}</p>
+          {serverMessage ? <p className="mt-1 leading-6">{serverMessage}</p> : null}
+          {errorEntries.length > 0 ? (
+            <ul className="mt-3 list-disc space-y-1 pl-5">
+              {errorEntries.map(([field, message]) => (
+                <li key={field}><a className="underline underline-offset-2" href={`#${field === "contact" ? "email" : field}`}>{message}</a></li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       ) : null}
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Nombre completo" name="name" error={errors.name} autoComplete="name" />
-        <Field label="Administradora / empresa" name="company" error={errors.company} autoComplete="organization" />
-        <Field label="Email" name="email" type="email" error={errors.email} autoComplete="email" inputMode="email" spellCheck={false} />
-        <Field label="Teléfono" name="phone" type="tel" error={errors.phone} autoComplete="tel" inputMode="tel" />
-        <Field label="Cantidad aproximada de edificios" name="buildings" type="number" min="0" error={errors.buildings} inputMode="numeric" />
-        <Field label="Cantidad aproximada de unidades funcionales" name="units" type="number" min="0" error={errors.units} inputMode="numeric" />
+        <Field label="Nombre" name="name" error={errors.name} autoComplete="name" maxLength={100} required />
+        <Field label="Administradora o empresa" name="company" error={errors.company} autoComplete="organization" maxLength={120} required />
+        <Field label="Email" hint="Email o teléfono: completá al menos uno." name="email" type="email" error={errors.email ?? errors.contact} autoComplete="email" inputMode="email" maxLength={254} spellCheck={false} />
+        <Field label="Teléfono" hint="Podés incluir característica y código de país." name="phone" type="tel" error={errors.phone ?? errors.contact} autoComplete="tel" inputMode="tel" maxLength={30} />
+        <Field label="Cantidad aproximada de edificios" hint="Opcional. No hace falta que sea exacto." name="buildings" type="number" error={errors.buildings} inputMode="numeric" min="0" max="100000" />
       </div>
 
       <div className="mt-5">
-        <label htmlFor="message" className="block text-sm font-semibold text-ink">
-          Mensaje
-        </label>
+        <label htmlFor="message" className="block text-sm font-bold text-ink">Mensaje <span className="font-normal text-steel">(opcional)</span></label>
+        <p id="message-hint" className="mt-1 text-xs leading-5 text-steel">¿Qué parte de la atención diaria querés ordenar primero?</p>
         <textarea
           id="message"
           name="message"
           rows={5}
-          required
-          className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-slate-400 focus:border-slateblue focus:outline focus:outline-2 focus:outline-slateblue/30"
+          maxLength={1500}
+          autoComplete="off"
+          className="mt-2 w-full rounded-xl border border-[#a9b7c3] bg-white px-4 py-3 text-ink shadow-sm transition-[border-color,box-shadow] duration-150 placeholder:text-steel focus:border-brand focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand"
           aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "message-error" : undefined}
+          aria-describedby={errors.message ? "message-hint message-error" : "message-hint"}
         />
-        {errors.message ? <p id="message-error" className="mt-2 text-sm text-red-700">{errors.message}</p> : null}
+        {errors.message ? <p id="message-error" className="mt-2 text-sm font-semibold text-[#9f2118]">{errors.message}</p> : null}
       </div>
 
-      <div className="mt-5 rounded-2xl bg-slate-50 p-4">
-        <label className="flex gap-3 text-sm leading-6 text-slate-700">
-          <input
-            type="checkbox"
-            name="consent"
-            required
-            className="mt-1 h-4 w-4 rounded border-slate-300 text-slateblue focus:ring-slateblue"
-            aria-invalid={Boolean(errors.consent)}
-            aria-describedby={errors.consent ? "consent-error" : undefined}
-          />
-          <span>{optInText}</span>
+      <div className="pointer-events-none absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Sitio web</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      <div className="mt-6 rounded-xl border border-line bg-canvas p-4 text-sm leading-6 text-steel">
+        <p>
+          Usaremos estos datos para responder tu consulta y coordinar una demostración por email o llamada. Si lo autorizás, también podremos responder por WhatsApp. Este tratamiento es necesario para gestionar tu solicitud. Consultá la {" "}
+          <Link className="font-bold text-navy underline decoration-brand/30 underline-offset-4 hover:text-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" href="/privacy">Política de Privacidad</Link>.
+        </p>
+        <label className="mt-4 flex min-h-11 cursor-pointer items-start gap-3 border-t border-line pt-4 text-ink">
+          <input name="whatsappContact" type="checkbox" className="mt-1 h-5 w-5 shrink-0 rounded border-line text-brand focus:ring-brand" />
+          <span>Autorizo a ConsFlow a responder esta solicitud por WhatsApp al número informado. <span className="text-steel">Opcional.</span></span>
         </label>
-        {errors.consent ? <p id="consent-error" className="mt-2 text-sm text-red-700">{errors.consent}</p> : null}
+        <label className="mt-4 flex min-h-11 cursor-pointer items-start gap-3 border-t border-line pt-4 text-ink">
+          <input name="marketing" type="checkbox" className="mt-1 h-5 w-5 shrink-0 rounded border-line text-brand focus:ring-brand" />
+          <span>{MARKETING_OPT_IN_TEXT} <span className="text-steel">Opcional.</span></span>
+        </label>
       </div>
 
       <button
         type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-slateblue px-6 py-3 text-base font-semibold text-white shadow-soft transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-ink hover:shadow-premium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slateblue motion-reduce:hover:translate-y-0 sm:w-auto"
+        disabled={status === "submitting"}
+        className="form-submit mt-6 inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-navy px-6 py-3 text-base font-bold text-white hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-wait disabled:bg-steel sm:w-auto"
       >
-        Enviar solicitud
+        {status === "submitting" ? <span className="submit-progress" aria-hidden="true"><i /><i /><i /></span> : null}
+        {status === "submitting" ? "Enviando solicitud…" : "Solicitar una demo"}
       </button>
     </form>
   );
@@ -96,42 +158,56 @@ export function ContactForm() {
 
 function Field({
   label,
+  hint,
   name,
   type = "text",
   error,
   autoComplete,
   min,
+  max,
+  maxLength,
   inputMode,
   spellCheck,
+  required = false,
 }: {
   label: string;
+  hint?: string;
   name: string;
   type?: string;
   error?: string;
   autoComplete?: string;
   min?: string;
+  max?: string;
+  maxLength?: number;
   inputMode?: "email" | "tel" | "numeric";
   spellCheck?: boolean;
+  required?: boolean;
 }) {
+  const describedBy = [hint ? `${name}-hint` : "", error ? `${name}-error` : ""].filter(Boolean).join(" ") || undefined;
+
   return (
-    <div>
-      <label htmlFor={name} className="block text-sm font-semibold text-ink">
-        {label}
+    <div className={name === "buildings" ? "sm:col-span-2" : undefined}>
+      <label htmlFor={name} className="block text-sm font-bold text-ink">
+        {label} {required ? <span className="text-[#9f2118]" aria-hidden="true">*</span> : null}
       </label>
+      {hint ? <p id={`${name}-hint`} className="mt-1 text-xs leading-5 text-steel">{hint}</p> : null}
       <input
         id={name}
         name={name}
         type={type}
         min={min}
-        required
-        autoComplete={autoComplete}
+        max={max}
+        step={type === "number" ? "1" : undefined}
+        maxLength={maxLength}
+        required={required}
+        autoComplete={autoComplete ?? "off"}
         inputMode={inputMode}
         spellCheck={spellCheck}
-        className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-slate-400 focus:border-slateblue focus:outline focus:outline-2 focus:outline-slateblue/30"
+        className="mt-2 min-h-12 w-full rounded-xl border border-[#a9b7c3] bg-white px-4 py-3 text-ink shadow-sm transition-[border-color,box-shadow] duration-150 focus:border-brand focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand"
         aria-invalid={Boolean(error)}
-        aria-describedby={error ? `${name}-error` : undefined}
+        aria-describedby={describedBy}
       />
-      {error ? <p id={`${name}-error`} className="mt-2 text-sm text-red-700">{error}</p> : null}
+      {error ? <p id={`${name}-error`} className="mt-2 text-sm font-semibold text-[#9f2118]">{error}</p> : null}
     </div>
   );
 }

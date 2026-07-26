@@ -1,30 +1,21 @@
 import Image from "next/image";
 
-const logoSrc = "/images/consflow-logo.png";
-
-export function BrandLogo({ size = "md", priority = false }: { size?: "sm" | "md" | "lg"; priority?: boolean }) {
-  const sizes = {
-    sm: "h-10 w-10",
-    md: "h-12 w-12",
-    lg: "h-20 w-20",
-  };
-
-  const imageSizes = {
-    sm: 40,
-    md: 48,
-    lg: 80,
-  };
-
+export function BrandLogo({ compact = false, priority = false }: { compact?: boolean; priority?: boolean }) {
   return (
-    <span className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ${sizes[size]}`}>
+    <span className="inline-flex min-w-0 items-center gap-2.5" translate="no">
       <Image
-        src={logoSrc}
-        alt="Logo de ConsFlow"
-        width={imageSizes[size]}
-        height={imageSizes[size]}
-        className="h-full w-full object-contain p-1.5"
+        src="/images/consflow-light-mark.png"
+        alt=""
+        width={36}
+        height={36}
+        sizes="36px"
+        className="brand-mark h-9 w-9 shrink-0 object-contain"
         priority={priority}
       />
+      <span className="min-w-0">
+        <span className="block text-[1.05rem] font-extrabold leading-none tracking-[-0.025em] text-ink">ConsFlow</span>
+        {compact ? null : <span className="mt-1 block text-[0.68rem] font-semibold leading-none text-steel">Operación para consorcios</span>}
+      </span>
     </span>
   );
 }

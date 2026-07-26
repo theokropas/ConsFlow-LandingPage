@@ -1,83 +1,63 @@
-import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/LegalPageLayout";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Política de Privacidad | ConsFlow",
-  description:
-    "Política de Privacidad inicial de ConsFlow: tratamiento de datos personales, finalidades, seguridad, derechos y canales de contacto.",
-  openGraph: {
-    title: "Política de Privacidad | ConsFlow",
-    description:
-      "Política de Privacidad inicial de ConsFlow: tratamiento de datos personales, finalidades, seguridad, derechos y canales de contacto.",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "Política de Privacidad",
+  description: "Versión inicial de la Política de Privacidad de ConsFlow, pendiente de revisión legal.",
+  path: "/privacy",
+  noIndex: true,
+});
 
 export default function PrivacyPage() {
   return (
     <LegalPageLayout
       title="Política de Privacidad"
-      subtitle="Esta Política de Privacidad describe cómo ConsFlow trata datos personales vinculados a consultas comerciales, solicitudes de demo y uso de la plataforma."
+      subtitle="Esta versión inicial explica de forma general qué información puede tratar ConsFlow en la landing y en la operación del producto. No reemplaza una revisión legal profesional."
+      updatedAt="26 de julio de 2026"
+      draft
     >
-      <p className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">
-        Nota: esta es una versión inicial informativa y debe ser revisada por asesoría legal antes de su uso definitivo en producción.
-      </p>
-
-      <h2>1. Responsable del tratamiento</h2>
+      <h2>1. Responsable y estado de este documento</h2>
       <p>
-        ConsFlow es una plataforma SaaS/CRM para administradoras de consorcios. Para consultas vinculadas a privacidad podés escribir a {" "}
-        <a href="mailto:contacto.consflow@gmail.com">contacto.consflow@gmail.com</a>.
+        ConsFlow es la denominación comercial del proyecto. La identificación legal completa del responsable, su domicilio y la jurisdicción aplicable deberán incorporarse antes del uso definitivo de esta política. Para consultas de privacidad podés escribir a {" "}
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
       </p>
 
-      <h2>2. Datos que podemos tratar</h2>
-      <p>Podemos tratar datos ingresados voluntariamente en formularios o durante el uso de la plataforma, incluyendo:</p>
+      <h2>2. Información de la landing</h2>
+      <p>Cuando solicitás una demo podemos recibir nombre, administradora o empresa, email, teléfono, cantidad aproximada de edificios, mensaje, autorización opcional de respuesta por WhatsApp y preferencia opcional de comunicaciones comerciales.</p>
+      <p>Estos datos se utilizan para responder la consulta, coordinar una demostración y, únicamente si lo elegís, responder por WhatsApp o enviar comunicaciones comerciales.</p>
+
+      <h2>3. Información tratada por el producto</h2>
+      <p>Según la configuración acordada con cada administradora, ConsFlow puede relacionar:</p>
       <ul>
-        <li>Nombre, email, teléfono y datos de contacto.</li>
-        <li>Nombre de administradora, empresa o consorcio.</li>
-        <li>Cantidad aproximada de edificios y unidades funcionales.</li>
-        <li>Mensajes, consultas, reclamos, tickets, documentos e historial operativo.</li>
-        <li>Datos necesarios para identificar edificios, unidades funcionales, vecinos, propietarios o usuarios autorizados.</li>
+        <li>Edificios, unidades funcionales y personas relacionadas.</li>
+        <li>Conversaciones y mensajes recibidos mediante WhatsApp.</li>
+        <li>Reclamos, tickets, estados, responsables e historial de acciones.</li>
+        <li>Documentos, deudas, expensas, proveedores y otra información operativa habilitada.</li>
       </ul>
+      <p>La administradora cliente puede actuar como responsable de los datos que incorpora al servicio. La distribución de responsabilidades deberá definirse contractualmente.</p>
 
-      <h2>3. Finalidades</h2>
-      <p>Los datos se pueden utilizar para:</p>
-      <ul>
-        <li>Responder consultas y gestionar solicitudes de demo.</li>
-        <li>Prestar, mantener y mejorar los servicios de ConsFlow.</li>
-        <li>Centralizar comunicaciones, reclamos, tickets, documentos e historial operativo.</li>
-        <li>Dar soporte técnico y administrativo a usuarios autorizados.</li>
-        <li>Cumplir obligaciones legales o requerimientos válidos de autoridad competente.</li>
-      </ul>
-
-      <h2>4. Base de tratamiento</h2>
+      <h2>4. WhatsApp, IA y proveedores técnicos</h2>
       <p>
-        El tratamiento puede basarse en el consentimiento de la persona usuaria, la ejecución de una relación contractual o precontractual, intereses legítimos vinculados a la operación segura del servicio y el cumplimiento de obligaciones legales aplicables.
+        ConsFlow integra WhatsApp mediante la Cloud API de Meta y puede usar funciones de IA para generar respuestas. Cuando una consulta necesita criterio humano, puede ser derivada al equipo administrativo. La versión legal definitiva deberá identificar a Meta y al proveedor de IA, junto con sus condiciones de tratamiento.
+      </p>
+      <p>
+        La landing se aloja actualmente en infraestructura de Vercel. Cuando el formulario de contacto está configurado, utiliza Resend para entregar la solicitud al buzón operativo de ConsFlow, actualmente provisto por Google Gmail, y Upstash para limitar intentos abusivos sin almacenar el contenido del formulario. La versión legal definitiva deberá detallar proveedores activos, ubicaciones, transferencias internacionales, conservación y condiciones contractuales aplicables.
       </p>
 
-      <h2>5. Comunicación de datos</h2>
+      <h2>5. Base y alcance del tratamiento</h2>
+      <p>La respuesta a una solicitud de demo se basa en la gestión de una consulta precontractual. Las comunicaciones comerciales opcionales se basan en la elección expresa de la persona interesada y pueden interrumpirse en cualquier momento.</p>
+
+      <h2>6. Conservación y seguridad</h2>
+      <p>La versión definitiva deberá establecer plazos de conservación por categoría y medidas técnicas y organizativas verificadas. Ningún sistema puede garantizar seguridad absoluta.</p>
+
+      <h2>7. Consultas, acceso y eliminación</h2>
       <p>
-        ConsFlow no vende datos personales. Los datos pueden ser compartidos únicamente con proveedores técnicos necesarios para operar el servicio, con usuarios autorizados por la administradora correspondiente o cuando exista una obligación legal aplicable.
+        Podés solicitar información, corrección o eliminación escribiendo a <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. Es posible que necesitemos verificar identidad, alcance y relación con la administradora correspondiente.
       </p>
 
-      <h2>6. Seguridad</h2>
-      <p>
-        ConsFlow adopta medidas razonables para proteger la información, incluyendo criterios de acceso controlado, trazabilidad y buenas prácticas de desarrollo. Ningún sistema es completamente infalible, por lo que la seguridad también depende del uso responsable de credenciales y accesos por parte de los usuarios.
-      </p>
-
-      <h2>7. Conservación</h2>
-      <p>
-        Los datos se conservan durante el tiempo necesario para cumplir las finalidades indicadas, atender obligaciones legales, resolver disputas o mantener registros operativos razonables según corresponda.
-      </p>
-
-      <h2>8. Derechos de las personas</h2>
-      <p>
-        Podés solicitar acceso, rectificación, actualización o eliminación de tus datos personales escribiendo a {" "}
-        <a href="mailto:contacto.consflow@gmail.com">contacto.consflow@gmail.com</a>. Es posible que solicitemos información adicional para verificar identidad y alcance de la solicitud.
-      </p>
-
-      <h2>9. Cambios en esta política</h2>
-      <p>
-        ConsFlow puede actualizar esta Política de Privacidad para reflejar cambios del servicio, legales o de seguridad. La versión vigente estará disponible en esta página.
-      </p>
+      <h2>8. Revisión pendiente</h2>
+      <p>Antes de retirar la condición de borrador deberán confirmarse la identidad legal del responsable, las bases jurídicas, los proveedores activos, las transferencias, los plazos y los procedimientos de atención de derechos.</p>
     </LegalPageLayout>
   );
 }

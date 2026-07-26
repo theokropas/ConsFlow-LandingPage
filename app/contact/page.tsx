@@ -1,50 +1,40 @@
-import type { Metadata } from "next";
-import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Solicitar demo | ConsFlow",
-  description:
-    "Solicitá una demo de ConsFlow para conocer cómo centralizar reclamos, consultas, documentos, unidades funcionales e historial operativo.",
-  openGraph: {
-    title: "Solicitar demo | ConsFlow",
-    description:
-      "Solicitá una demo de ConsFlow para conocer cómo centralizar reclamos, consultas, documentos, unidades funcionales e historial operativo.",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "Solicitar una demo",
+  description: "Conocé cómo ConsFlow conecta WhatsApp con la operación y el seguimiento de tu administradora.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
-    <div className="bg-[radial-gradient(circle_at_top_left,rgba(47,129,223,0.10),transparent_32%),linear-gradient(180deg,#f8fbfd,#eef6fb)] px-4 py-14 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-        <section className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/95 p-8 shadow-soft lg:p-10">
-          <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brandblue/10" aria-hidden="true" />
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slateblue">Demo</p>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-5xl">Solicitá una demo de ConsFlow</h1>
-          <p className="mt-5 text-lg leading-8 text-slate-600">
-            Completá el formulario y te contactaremos para entender las necesidades de tu administradora y mostrarte cómo ConsFlow puede ayudarte a ordenar la atención diaria.
+    <div className="px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+        <section className="lg:sticky lg:top-28 lg:self-start">
+          <p className="text-sm font-bold text-link">Demo de ConsFlow</p>
+          <h1 className="mt-4 max-w-[12ch] text-4xl font-extrabold leading-[1.08] tracking-[-0.035em] text-ink sm:text-5xl">Veamos cómo trabaja tu administradora.</h1>
+          <p className="mt-6 max-w-lg text-lg leading-8 text-steel">
+            Contanos lo esencial. Te mostramos cómo ConsFlow conecta cada conversación con el trabajo que sigue.
           </p>
-          <div className="mt-8 rounded-2xl border border-sky-100 bg-calm p-5 shadow-sm">
-            <h2 className="text-lg font-semibold text-ink">Contacto alternativo</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              También podés escribirnos a {" "}
-              <a className="break-words font-semibold text-slateblue underline decoration-slateblue/30 underline-offset-4 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-slateblue" href="mailto:contacto.consflow@gmail.com">
-                contacto.consflow@gmail.com
-              </a>
-              . Responderemos por este canal o por los medios de contacto que indiques en tu consulta.
-            </p>
+          <div className="mt-9 border-y border-line py-5">
+            <p className="text-sm font-bold text-ink">En la demostración podemos revisar:</p>
+            <ul className="mt-4 space-y-3 text-sm text-steel">
+              {[
+                "Cómo entra y se organiza una conversación.",
+                "Cómo se relacionan edificio, unidad y persona.",
+                "Cómo continúa un caso dentro del equipo.",
+              ].map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />{item}</li>)}
+            </ul>
           </div>
-        </section>
-
-        <section aria-label="Formulario para solicitar demo">
-          <ContactForm />
-          <p className="mt-5 text-sm leading-6 text-slate-600">
-            Al enviar este formulario, aceptás que ConsFlow procese los datos ingresados para responder tu consulta y gestionar la solicitud de demo. Para más información, consultá nuestra {" "}
-            <Link className="font-semibold text-slateblue underline decoration-slateblue/30 underline-offset-4 hover:text-ink" href="/privacy">
-              Política de Privacidad
-            </Link>
-            .
+          <p className="mt-6 text-sm leading-6 text-steel">
+            También podés escribirnos a {" "}
+            <a className="break-words font-bold text-navy underline decoration-brand/30 underline-offset-4 hover:text-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
+        </section>
+        <section aria-label="Formulario para solicitar una demo">
+          <ContactForm />
         </section>
       </div>
     </div>

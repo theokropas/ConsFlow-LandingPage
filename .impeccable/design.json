@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-20T00:00:00.000Z",
+  "title": "Design System: ConsFlow",
+  "extensions": {
+    "colorMeta": {
+      "operation-blue": {
+        "role": "primary",
+        "displayName": "Azul operativo",
+        "canonical": "#1F7DD6",
+        "tonalRamp": ["#0B3155", "#0F4A7E", "#145F9F", "#1F7DD6", "#65A7E4", "#A9D2F2", "#D6EAF9", "#F0F7FD"]
+      },
+      "control-navy": {
+        "role": "neutral",
+        "displayName": "Azul control",
+        "canonical": "#102A43",
+        "tonalRamp": ["#081521", "#102A43", "#244B6A", "#426985", "#6C8AA1", "#A0B4C3", "#D3DEE6", "#F2F5F7"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Propuesta principal y cierres de sección." },
+      "body": { "displayName": "Body · Geist", "purpose": "Lectura comercial y explicaciones operativas." }
+    },
+    "shadows": [
+      { "name": "ambient", "value": "0 24px 70px rgba(16, 42, 67, 0.10)", "purpose": "Panel principal de producto." },
+      { "name": "menu", "value": "0 20px 50px rgba(12, 27, 42, 0.14)", "purpose": "Navegación mobile desplegada." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Estados y entradas breves." },
+      { "name": "press", "value": "140ms", "purpose": "Compresión de controles." },
+      { "name": "hover", "value": "170ms", "purpose": "Color, borde y transform." },
+      { "name": "menu", "value": "260ms", "purpose": "Apertura del menú mobile." },
+      { "name": "panel", "value": "340ms", "purpose": "Cambio de vistas del producto." },
+      { "name": "reveal", "value": "520ms", "purpose": "Secuencias narrativas al entrar en viewport." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA principal de demo.",
+      "html": "<button class=\"ds-button-primary\">Solicitar una demo</button>",
+      "css": ".ds-button-primary{min-height:48px;border:0;border-radius:999px;padding:12px 24px;background:#102a43;color:#fff;font:700 16px Manrope,Arial,sans-serif;transition:background-color 160ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1)}.ds-button-primary:hover{background:#0c1b2a}.ds-button-primary:active{transform:scale(.98)}.ds-button-primary:focus-visible{outline:2px solid #1f7dd6;outline-offset:3px}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulario con label persistente.",
+      "html": "<label class=\"ds-label\">Email<input class=\"ds-input\" type=\"email\"></label>",
+      "css": ".ds-label{display:grid;gap:8px;color:#0c1b2a;font:700 14px Manrope,Arial,sans-serif}.ds-input{min-height:48px;border:1px solid #a9b7c3;border-radius:12px;padding:12px 14px;background:#fff;color:#0c1b2a;font:400 16px Manrope,Arial,sans-serif}.ds-input:focus-visible{border-color:#1f7dd6;outline:2px solid #1f7dd6;outline-offset:2px}"
+    },
+    {
+      "name": "Operational Status",
+      "kind": "chip",
+      "description": "Estado textual acompañado por un indicador visual.",
+      "html": "<span class=\"ds-status\"><span class=\"ds-status-dot\"></span>En curso</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 12px;background:#eaf3fb;color:#102a43;font:700 13px Manrope,Arial,sans-serif}.ds-status-dot{width:8px;height:8px;border-radius:999px;background:#1f7dd6}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La línea operativa",
+    "overview": "Una línea azul conecta mensaje, persona, unidad, reclamo, prioridad e historial dentro de una mesa de control clara.",
+    "keyCharacteristics": ["Composición asimétrica", "Densidad concentrada en las vistas de producto", "Un único sistema claro", "Movimiento breve y motivado"],
+    "rules": [
+      { "name": "The Connection Rule", "body": "El azul brillante representa relaciones o estados activos; no se usa como decoración dispersa.", "section": "colors" },
+      { "name": "The Structural Elevation Rule", "body": "Si una sombra no explica que una superficie está por encima de otra, se elimina.", "section": "elevation" }
+    ],
+    "dos": ["Mostrar la relación entre conversación, persona, unidad, edificio, ticket e historial.", "Mantener estados reales del servidor en el formulario."],
+    "donts": ["No parecer una plantilla SaaS genérica ni una web de chatbot.", "No usar grillas interminables de tarjetas, gradientes luminosos, blobs o movimiento permanente."]
+  }
+}
