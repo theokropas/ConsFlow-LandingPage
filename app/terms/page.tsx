@@ -52,8 +52,8 @@ export default function TermsPage() {
         <li><strong>Nombre:</strong> para identificar a la persona que realiza la consulta.</li>
         <li><strong>Administradora o empresa:</strong> para comprender qué organización representa y preparar una demostración relevante.</li>
         <li><strong>Email y/o teléfono:</strong> para responder la solicitud y coordinar la demostración. Es obligatorio informar al menos uno de los dos.</li>
-        <li><strong>Cantidad aproximada de edificios, si la informás:</strong> para estimar la escala operativa y adaptar la conversación comercial.</li>
-        <li><strong>Mensaje, si lo escribís:</strong> para conocer la necesidad, consulta o parte de la operación que buscás ordenar.</li>
+        <li><strong>Cantidad de edificios:</strong> para estimar la escala operativa y adaptar la conversación comercial.</li>
+        <li><strong>Mensajes:</strong> para conocer la necesidad, consulta o parte de la operación que buscás ordenar.</li>
         <li><strong>Preferencia de contacto por WhatsApp:</strong> para registrar si autorizaste que respondamos esa solicitud por WhatsApp.</li>
         <li><strong>Preferencia de comunicaciones comerciales:</strong> para registrar si aceptaste recibir novedades por email, teléfono o WhatsApp. Si no la marcás, no usamos los datos con esa finalidad.</li>
       </ul>
