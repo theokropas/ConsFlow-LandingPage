@@ -131,9 +131,10 @@ export function ContactForm() {
 
       <div className="mt-6 rounded-xl border border-line bg-canvas p-4 text-sm leading-6 text-steel">
         <p>
-          Usaremos estos datos para responder tu consulta y coordinar una demostración por email o llamada. Si lo autorizás, también podremos responder por WhatsApp. Este tratamiento es necesario para gestionar tu solicitud. Consultá la {" "}
-          <Link className="font-bold text-navy underline decoration-brand/30 underline-offset-4 hover:text-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" href="/privacy">Política de Privacidad</Link>.
+          Usaremos estos datos para responder tu consulta y coordinar una demostración por email o llamada. Si lo autorizás, también podremos responder por WhatsApp. Este tratamiento es necesario para gestionar tu solicitud. Consultá nuestros {" "}
+          <Link className="font-bold text-navy underline decoration-brand/30 underline-offset-4 hover:text-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" href="/terms">Términos y criterios de privacidad</Link>.
         </p>
+        <p className="mt-3 text-xs leading-5">El envío genera un identificador técnico y usa temporalmente un hash de la IP para evitar duplicados y abuso. No utilizamos cookies de analítica o publicidad.</p>
         <label className="mt-4 flex min-h-11 cursor-pointer items-start gap-3 border-t border-line pt-4 text-ink">
           <input name="whatsappContact" type="checkbox" className="mt-1 h-5 w-5 shrink-0 rounded border-line text-brand focus:ring-brand" />
           <span>Autorizo a ConsFlow a responder esta solicitud por WhatsApp al número informado. <span className="text-steel">Opcional.</span></span>

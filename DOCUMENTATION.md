@@ -37,7 +37,7 @@ El Route Handler valida origen, limita el body a 20 KB, usa honeypot y establece
 
 ## Contenido legal
 
-`/privacy` y `/terms` son versiones iniciales pendientes de revisión profesional y publican metadata `noindex, nofollow`. Antes de producción definitiva deben completarse la identidad legal, jurisdicción, proveedores, transferencias, plazos y condiciones contractuales.
+`/terms` reúne los términos, condiciones y criterios de privacidad en una versión inicial pendiente de revisión profesional, con metadata `noindex, nofollow`. Antes de producción definitiva deben completarse la identidad legal, jurisdicción, proveedores, transferencias, plazos y condiciones contractuales.
 
 ## Vistas de producto
 

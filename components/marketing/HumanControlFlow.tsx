@@ -32,9 +32,7 @@ export function HumanControlFlow() {
           <h2 className="font-display text-3xl font-extrabold tracking-[-0.035em] text-ink sm:text-5xl">Automatización donde ayuda. Personas donde importa.</h2>
           <p className="mt-6 max-w-xl text-lg leading-8 text-steel">La IA responde consultas frecuentes y organiza cada caso. Tu equipo conserva la revisión, la decisión y el seguimiento.</p>
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold">
-            <Link href="/privacy" className="human-link">Privacidad</Link>
-            <Link href="/terms" className="human-link">Términos</Link>
-            <Link href="/data-deletion" className="human-link">Eliminación de datos</Link>
+            <Link href="/terms" className="human-link">Términos y privacidad</Link>
           </div>
         </div>
 
@@ -64,7 +62,6 @@ export function HumanControlFlow() {
             <div><span>Organización</span><strong>Contexto separado por administradora</strong></div>
             <div><span>Acceso</span><strong>Usuarios internos autorizados</strong></div>
             <div><span>Trazabilidad</span><strong>Estados, prioridades y auditoría</strong></div>
-            <div><span>Privacidad</span><strong>Canal de eliminación de datos</strong></div>
           </div>
         </div>
       </div>

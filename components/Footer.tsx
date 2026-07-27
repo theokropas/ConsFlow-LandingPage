@@ -6,9 +6,7 @@ const footerLinks = [
   { label: "Inicio", href: "/" },
   { label: "Producto", href: "/#producto" },
   { label: "Contacto", href: "/contact" },
-  { label: "Privacidad", href: "/privacy" },
-  { label: "Términos", href: "/terms" },
-  { label: "Eliminación de datos", href: "/data-deletion" },
+  { label: "Términos y privacidad", href: "/terms" },
 ];
 
 export function Footer() {
